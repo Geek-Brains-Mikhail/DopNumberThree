@@ -9,69 +9,88 @@
 
 bool isWork = true;
 string decision,password,name,secondName,email; 
-name = password = secondName = email =decision =  "Не указано";
-System.Console.WriteLine(decision);
+name = secondName = email =decision =  "Не указано";
+password = "";
+bool passwordStatus = false;
 while(isWork)
 {
     Console.Write("Напишите, что вы хотите сделать(чтобы получить инструкцию напишите 'Help'): ");
     decision = Console.ReadLine();
     Console.WriteLine(" "); //Пустота
-    if(decision.ToLower() == "exit")
+    switch(decision.ToLower())
     {
-        isWork = false;
-        Console.WriteLine("Вы вышли из системы!");
-        Console.WriteLine(" ");//Пустота
+        case "exit":
+            isWork = false;
+            Console.WriteLine("Вы вышли из системы!");
+            Console.WriteLine(" ");//Пустота
+        break;
+        case "setname":
+            Console.Write("Введите свое имя: ");
+            name = Console.ReadLine();
+            Console.WriteLine("Отлично, имя установлено!");
+            Console.WriteLine(" ");//Пустота
+            break;
+        case "setsecondname":
+            Console.Write("Введите свою фамилию: ");
+            secondName = Console.ReadLine();
+            Console.WriteLine("Отлично, фамилия установлена!");
+            Console.WriteLine(" ");//Пустота
+            break;
+        case "informaboutme":
+            if(string.IsNullOrEmpty(password))
+            {
+                Console.WriteLine("Чтобы получить данные, нужно установить пароль.");         
+                Console.Write("Хотите продолжить?(Напишите 'Yes' or 'No'): ");
+                string opinion = Console.ReadLine();  
+                if(opinion.ToLower() == "no"){
+                    break;
+                }
+                Console.Write("Установите пароль: ");
+                password = Console.ReadLine();
+                Console.WriteLine(" ");//Пустота
+            
+            }
+            Console.WriteLine("Ваше имя: " + name);
+            Console.WriteLine("Ваша фамилия: " + secondName);
+            Console.WriteLine("Ваш пароль: " + password);
+            Console.WriteLine("Ваша электронная почта:  " + email);
+            Console.WriteLine(" ");//Пустота
+            break;
+        case "setpassword":
+            Console.Write("Введите свой пароль: ");
+            password = Console.ReadLine();
+            Console.WriteLine("Отлично, пароль установлен!");
+            Console.WriteLine(" ");//Пустота
+            break;
+        case "setemail":
+            Console.Write("Введите свою почту: ");
+            email = Console.ReadLine();
+            Console.WriteLine("Отлично, почта установлена!");
+            Console.WriteLine(" ");//Пустота
+            break;
+        case "clear":
+            Console.Clear();
+            break;
+        case "help":
+             Console.WriteLine("Все функции программы: ");
+            Console.WriteLine(" ");//Пустота
+            Console.WriteLine("Setname -  установить свое имя");
+            Console.WriteLine("Setsecondname  - установить свою фамилию");
+            Console.WriteLine("Setpassword - установить пароль");
+            Console.WriteLine("Setemail - указать свою почту");
+            Console.WriteLine("InformAboutMe - узнать заполненную информацию о себе  ");
+            Console.WriteLine("Clear - очистить терминал");
+            Console.WriteLine("Exit - выход  из программы ");
+            Console.WriteLine(" ");//Пустота
+            break;
+        default:
+            Console.WriteLine("Вы не верно ввели команду.");
+            break;
+
+
+
     }
-    if(decision.ToLower() == "setname")
-    {
-        Console.Write("Введите свое имя: ");
-        name = Console.ReadLine();
-        Console.WriteLine("Отлично, имя установлено!");
-        Console.WriteLine(" ");//Пустота
-    }    
-    if(decision.ToLower() == "setsecondname")
-    {
-        Console.Write("Введите свою фамилию: ");
-        secondName = Console.ReadLine();
-        Console.WriteLine("Отлично, фамилия установлена!");
-        Console.WriteLine(" ");//Пустота
-    }  
-    if(decision.ToLower() == "informaboutme")
-    {
-        Console.WriteLine("Ваше имя: " + name);
-        Console.WriteLine("Ваша фамилия: " + secondName);
-        Console.WriteLine("Ваш пароль: " + password);
-        Console.WriteLine("Ваша электронная почта:  " + email);
-        Console.WriteLine(" ");//Пустота
-    }
-    if(decision.ToLower() == "setpassword")
-    {
-        Console.Write("Введите свой пароль: ");
-        password = Console.ReadLine();
-        Console.WriteLine("Отлично, пароль установлен!");
-        Console.WriteLine(" ");//Пустота
-    }
-    if(decision.ToLower() == "setemail")
-    {
-        Console.Write("Введите свою почту: ");
-        email = Console.ReadLine();
-        Console.WriteLine("Отлично, почта установлена!");
-        Console.WriteLine(" ");//Пустота
-    }
-    if(decision.ToLower() == "clear") Console.Clear();
-    if(decision.ToLower() == "help")
-    {
-        Console.WriteLine("Все функции программы: ");
-        Console.WriteLine(" ");//Пустота
-        Console.WriteLine("Setname -  установить свое имя");
-        Console.WriteLine("Setsecondname  - установить свою фамилию");
-        Console.WriteLine("Setpassword - установить пароль");
-        Console.WriteLine("Setemail - указать свою почту");
-        Console.WriteLine("InformAboutMe - узнать заполненнужю информацию о себе");
-        Console.WriteLine("Clear - очистить терминал");
-        Console.WriteLine("Exit - выход  из программы ");
-        Console.WriteLine(" ");//Пустота
-    }
+
 }
 
 
