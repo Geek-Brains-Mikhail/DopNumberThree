@@ -42,7 +42,8 @@ while(isWork)
                 Console.WriteLine("Чтобы получить данные, нужно установить пароль.");         
                 Console.Write("Хотите продолжить?(Напишите 'Yes' or 'No'): ");
                 string opinion = Console.ReadLine();  
-                if(opinion.ToLower() == "no"){
+                if(opinion.ToLower() == "no")
+                {
                     break;
                 }
                 Console.Write("Установите пароль: ");
